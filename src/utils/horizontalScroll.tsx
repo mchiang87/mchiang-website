@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { RefObject, useRef, useEffect, useState } from "react";
 
 export const useHorizontalScroll = (
   displayed: number,
@@ -12,7 +12,7 @@ export const useHorizontalScroll = (
         if (e.deltaY == 0) return;
         e.preventDefault();
         el.scrollTo({
-          left: el.scrollLeft + 3 * e.deltaY,
+          left: el.scrollLeft + 4 * e.deltaY,
           behavior: "smooth",
         });
         if (displayed >= 0 && displayed < 4 && Math.sign(e.deltaY) !== -1) {

@@ -20,19 +20,19 @@ export default function Home() {
     },
     {
       component: <SkillsComponent />,
-      coord: 300,
+      coord: 400,
     },
     {
       component: <ProjectsComponent />,
-      coord: 600,
+      coord: 800,
     },
     {
       component: <ResumeComponent />,
-      coord: 900,
+      coord: 1200,
     },
     {
       component: <AboutComponent />,
-      coord: 1200,
+      coord: 1600,
     },
   ];
 
