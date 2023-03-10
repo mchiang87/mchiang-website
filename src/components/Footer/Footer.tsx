@@ -1,55 +1,37 @@
-import React, { RefObject } from "react";
-import { IntroComponent } from "@components/Intro/Intro";
-import { AboutComponent } from "@components/About/About";
-import { SkillsComponent } from "@components/Skills/Skills";
-import { ProjectsComponent } from "@components/Projects/Projects";
-import { ResumeComponent } from "@components/Resume/Resume";
+import React, { ReactElement, RefObject } from "react";
+
+type DisplayObject = {
+  component: ReactElement;
+  coord: number;
+};
 
 type Props = {
+  displays: DisplayObject[];
   foregroundRef: RefObject<HTMLElement> | null;
   setDisplayed: Function;
 };
 
-export const FooterComponent = ({ foregroundRef, setDisplayed }: Props) => {
-  const displays = {
-    intro: {
-      component: <IntroComponent />,
-      coord: 0,
-    },
-    skills: {
-      component: <SkillsComponent />,
-      coord: 300,
-    },
-    projects: {
-      component: <ProjectsComponent />,
-      coord: 600,
-    },
-    resume: {
-      component: <ResumeComponent />,
-      coord: 900,
-    },
-    about: {
-      component: <AboutComponent />,
-      coord: 1200,
-    },
-  };
-
-  const handleClick = (componentId) => {
+export const FooterComponent = ({
+  displays,
+  foregroundRef,
+  setDisplayed,
+}: Props) => {
+  const handleClick = (componentIndex) => {
     const el = foregroundRef?.current;
-    setDisplayed(displays[componentId].component);
+    setDisplayed(componentIndex);
     el.scrollTo({
-      left: displays[componentId].coord,
+      left: displays[componentIndex].coord,
       behavior: "smooth",
     });
   };
 
   return (
     <section className='overflow-hidden bg-sky-300 grid grid-cols-5 gap-4 absolute bottom-0 left-0 w-full'>
-      <h4 onClick={() => handleClick("intro")}>Home</h4>
-      <h4 onClick={() => handleClick("skills")}>Skills</h4>
-      <h4 onClick={() => handleClick("projects")}>Projects</h4>
-      <h4 onClick={() => handleClick("resume")}>Resume</h4>
-      <h4 onClick={() => handleClick("about")}>About Me</h4>
+      <h4 onClick={() => handleClick(0)}>Home</h4>
+      <h4 onClick={() => handleClick(1)}>Skills</h4>
+      <h4 onClick={() => handleClick(2)}>Projects</h4>
+      <h4 onClick={() => handleClick(3)}>Resume</h4>
+      <h4 onClick={() => handleClick(4)}>About Me</h4>
     </section>
   );
 };
