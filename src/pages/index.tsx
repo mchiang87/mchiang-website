@@ -2,11 +2,11 @@ import React, { useRef, useState } from "react";
 import { ParallaxComponent } from "@Components/Parallax/Parallax";
 import { MiniMeComponent } from "@Components/MiniMe/MiniMe";
 import { FooterComponent } from "@components/Footer/Footer";
-import { IntroComponent } from "@components/Intro/Intro";
-import { AboutComponent } from "@components/About/About";
-import { SkillsComponent } from "@components/Skills/Skills";
-import { ProjectsComponent } from "@components/Projects/Projects";
-import { ResumeComponent } from "@components/Resume/Resume";
+import { IntroComponent } from "@components/sections/Intro/Intro";
+import { AboutComponent } from "@components/sections/About/About";
+import { SkillsComponent } from "@components/sections/Skills/Skills";
+import { ProjectsComponent } from "@components/sections/Projects/Projects";
+import { ResumeComponent } from "@components/sections/Resume/Resume";
 
 export default function Home() {
   const elRef = useRef(null);

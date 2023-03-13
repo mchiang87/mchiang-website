@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { useHorizontalScroll } from "@Utils/horizontalScroll";
 
 type Props = {
