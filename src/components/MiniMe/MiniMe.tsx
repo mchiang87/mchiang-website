@@ -5,9 +5,9 @@ type Props = {
 };
 
 export const MiniMeComponent = ({ objRef }: Props) => {
-  const stillMe = <div className='sticky left-8 top-2/3 h-8 w-8 bg-red-900' />;
+  const stillMe = <div className='fixed left-8 bottom-44 h-8 w-8 bg-red-900' />;
   const movingMe = (
-    <div className='sticky left-8 top-2/3 h-8 w-8 bg-blue-900' />
+    <div className='fixed left-8 bottom-44 h-8 w-8 bg-blue-900' />
   );
   const [miniMe, setMiniMe] = useState(stillMe);
 
@@ -15,7 +15,6 @@ export const MiniMeComponent = ({ objRef }: Props) => {
     const el: any = objRef?.current;
     if (el) {
       const onWheel = (e) => {
-        e.preventDefault();
         let isScrolling;
         window.clearTimeout(isScrolling);
         isScrolling = setTimeout(() => {
@@ -25,7 +24,7 @@ export const MiniMeComponent = ({ objRef }: Props) => {
           setMiniMe(movingMe);
         }
       };
-      el.addEventListener("wheel", onWheel);
+      el.addEventListener("wheel", onWheel, { passive: true });
       return () => el.removeEventListener("wheel", onWheel);
     }
   }, []);

@@ -10,9 +10,10 @@ export const useHorizontalScroll = (
     if (el) {
       const onWheel = (e) => {
         if (e.deltaY == 0) return;
-        e.preventDefault();
+        // console.log(el.clientWidth);
+        // console.log(el.scrollLeft);
         el.scrollTo({
-          left: el.scrollLeft + 4 * e.deltaY,
+          left: el.scrollLeft + ((el.clientWidth / 5) * e.deltaY) / 100,
           behavior: "smooth",
         });
         if (displayed >= 0 && displayed < 4 && Math.sign(e.deltaY) !== -1) {
@@ -21,7 +22,7 @@ export const useHorizontalScroll = (
           setDisplayed((displayed += e.deltaY / 100));
         }
       };
-      el.addEventListener("wheel", onWheel);
+      el.addEventListener("wheel", onWheel, { passive: true });
       return () => el.removeEventListener("wheel", onWheel);
     }
   }, [displayed]);

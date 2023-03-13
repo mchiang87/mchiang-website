@@ -46,7 +46,7 @@ export default function Home() {
         setForegroundRef={setForegroundRef}
       >
         <MiniMeComponent objRef={elRef} />
-        <section className='w-[800px] sticky left-8 top-0'>
+        <section className='w-[800px] fixed left-8 bottom-96 index-50'>
           {displays[displayed].component}
         </section>
       </ParallaxComponent>
