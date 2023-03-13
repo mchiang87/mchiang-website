@@ -1,4 +1,4 @@
-import { RefObject, useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 
 export const useHorizontalScroll = (
   displayed: number,
@@ -10,10 +10,11 @@ export const useHorizontalScroll = (
     if (el) {
       const onWheel = (e) => {
         if (e.deltaY == 0) return;
-        // console.log(el.clientWidth);
-        // console.log(el.scrollLeft);
+
         el.scrollTo({
-          left: el.scrollLeft + ((el.clientWidth / 5) * e.deltaY) / 100,
+          left:
+            el.scrollLeft +
+            (((el.firstChild.clientWidth - 1000) / 4) * e.deltaY) / 100,
           behavior: "smooth",
         });
         if (displayed >= 0 && displayed < 4 && Math.sign(e.deltaY) !== -1) {

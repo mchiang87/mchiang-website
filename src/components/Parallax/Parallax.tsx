@@ -4,6 +4,7 @@ import { useHorizontalScroll } from "@Utils/horizontalScroll";
 type Props = {
   children: ReactNode;
   displayed: number;
+  setBackgroundRef: Function;
   setDisplayed: Function;
   setForegroundRef: Function;
 };
@@ -11,16 +12,15 @@ type Props = {
 export const ParallaxComponent = ({
   children,
   displayed,
+  setBackgroundRef,
   setDisplayed,
   setForegroundRef,
 }: Props) => {
-  // const backgroundRef = useRef(null);
-  // const foregroundRef = useRef(null);
-  const scrollRef = useHorizontalScroll(displayed, setDisplayed);
   const backgroundRef = useHorizontalScroll(displayed, setDisplayed);
   const foregroundRef = useHorizontalScroll(displayed, setDisplayed);
 
   useEffect(() => {
+    setBackgroundRef(backgroundRef);
     setForegroundRef(foregroundRef);
   }, []);
 

@@ -2,25 +2,33 @@ import React, { ReactElement, RefObject } from "react";
 
 type DisplayObject = {
   component: ReactElement;
-  coord: number;
+  fgCoord: number;
+  bgCoord: number;
 };
 
 type Props = {
+  backgroundRef: RefObject<HTMLElement> | null;
   displays: DisplayObject[];
   foregroundRef: RefObject<HTMLElement> | null;
   setDisplayed: Function;
 };
 
 export const FooterComponent = ({
+  backgroundRef,
   displays,
   foregroundRef,
   setDisplayed,
 }: Props) => {
   const handleClick = (componentIndex) => {
-    const el = foregroundRef?.current;
+    const fgEl = foregroundRef?.current;
+    const bgEl = backgroundRef?.current;
     setDisplayed(componentIndex);
-    el.scrollTo({
-      left: displays[componentIndex].coord,
+    fgEl.scrollTo({
+      left: displays[componentIndex].fgCoord,
+      behavior: "smooth",
+    });
+    bgEl.scrollTo({
+      left: displays[componentIndex].bgCoord,
       behavior: "smooth",
     });
   };

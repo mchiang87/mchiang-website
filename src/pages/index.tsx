@@ -12,27 +12,33 @@ export default function Home() {
   const elRef = useRef(null);
   const [displayed, setDisplayed] = useState(0);
   const [foregroundRef, setForegroundRef] = useState(null);
+  const [backgroundRef, setBackgroundRef] = useState(null);
 
   const displays = [
     {
       component: <IntroComponent />,
-      coord: 0,
+      fgCoord: 0,
+      bgCoord: 0,
     },
     {
       component: <SkillsComponent />,
-      coord: 400,
+      fgCoord: 550,
+      bgCoord: 166,
     },
     {
       component: <ProjectsComponent />,
-      coord: 800,
+      fgCoord: 1100,
+      bgCoord: 332,
     },
     {
       component: <ResumeComponent />,
-      coord: 1200,
+      fgCoord: 1650,
+      bgCoord: 498,
     },
     {
       component: <AboutComponent />,
-      coord: 1600,
+      fgCoord: 2200,
+      bgCoord: 664,
     },
   ];
 
@@ -42,6 +48,7 @@ export default function Home() {
     <div ref={elRef}>
       <ParallaxComponent
         displayed={displayed}
+        setBackgroundRef={setBackgroundRef}
         setDisplayed={setDisplayed}
         setForegroundRef={setForegroundRef}
       >
@@ -52,6 +59,7 @@ export default function Home() {
       </ParallaxComponent>
       <FooterComponent
         displays={displays}
+        backgroundRef={backgroundRef}
         foregroundRef={foregroundRef}
         setDisplayed={setDisplayed}
       />
