@@ -1,5 +1,10 @@
 import React from "react";
+import { Input } from "./input";
 
 export const SkillsComponent = () => {
-  return <section>This is the skills section</section>;
+  return (
+    <section>
+      <Input value='asdf' placeholder='asdf' type='input' />
+    </section>
+  );
 };
